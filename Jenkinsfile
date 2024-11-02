@@ -6,12 +6,13 @@ pipeline {
     }
     stages {
         stage('Build Docker Image') {
-            steps {
-                script {
-                    docker.build("${DOCKER_IMAGE}:${env.BUILD_ID}")
-                }
-            }
+    steps {
+        script {
+            sh '/usr/local/bin/docker build -t ${DOCKER_IMAGE}:${env.BUILD_ID} .'
         }
+    }
+}
+
         stage('Push Docker Image') {
             steps {
                 script {
