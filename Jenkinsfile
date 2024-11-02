@@ -8,8 +8,8 @@ pipeline {
         stage('Build Docker Image') {
     steps {
         script {
-            def dockerImage = "karnastha/node-app:${env.BUILD_ID}"
-            sh "docker build -t ${dockerImage} ."
+            
+                    sh '/usr/local/bin/docker build -t ${DOCKER_IMAGE}:${env.BUILD_ID} .'
         }
     }
 }
